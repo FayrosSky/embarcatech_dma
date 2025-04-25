@@ -80,7 +80,7 @@ void initialize_dma()
 // Função para exibir as amostras
 void print_samples()
 {
-    printf("DMA concluído! Amostras:\n");
+    printf("DMA concluído!\n");
     printf("Número da amostragem: %d\n", count++);
     for (int i = 0; i < SAMPLES; i++)
     {

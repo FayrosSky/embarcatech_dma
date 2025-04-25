@@ -27,7 +27,7 @@ project(embarcatech_dma C CXX ASM)
 pico_sdk_init()
 
 # Configuração do executável dma_irq
-add_executable(dma_irq src/dma_irq.c)
+add_executable(dma_irq dma_irq.c)
 pico_set_program_name(dma_irq "embarcatech_dma_irq")
 pico_set_program_version(dma_irq "0.1")
 pico_enable_stdio_uart(dma_irq 0)
@@ -37,7 +37,7 @@ target_include_directories(dma_irq PRIVATE ${CMAKE_CURRENT_LIST_DIR})
 pico_add_extra_outputs(dma_irq)
 
 # Configuração do executável dma_blocking
-add_executable(dma_blocking src/dma_blocking.c)
+add_executable(dma_blocking dma_blocking.c)
 pico_set_program_name(dma_blocking "embarcatech_dma_blocking")
 pico_set_program_version(dma_blocking "0.2")
 pico_enable_stdio_uart(dma_blocking 0)
