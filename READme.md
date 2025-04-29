@@ -16,7 +16,7 @@ O DMA (Direct Memory Access), ou Acesso Direto à Memória, no Raspberry Pi Pic
 Essa interface é habilitada através da lib de baixo nível `hardware/dma.h`, nativa do Pico SDK. O DMA do Pico W possui algumas especificações:
 
 - **Canais:** O RP2040 possui 12 canais DMA independentes, permitindo múltiplas transferências (concorrência)
-    > Quando múltiplos canais estão ativos ao mesmo tempo, o DMA utiliza um esquema de round-robin entre todos os canais que estão solicitando transferências de dados no momento. 
+    > Quando múltiplos canais estão ativos ao mesmo tempo, o DMA utiliza um esquema de round-robin (veja mais [aqui](https://embarcados.com.br/meu-kernel-minha-vida-round-robin/)) entre todos os canais que estão solicitando transferências de dados no momento. 
     Isso ocorre porque, **apesar de existirem vários canais de DMA, há um único caminho físico (barramento) que eles compartilham para realizar as transferências de dados**
 
 - **Tamanho dos dados:**  Cada canal pode realizar uma operação de leitura e uma de escrita em cada ciclo de clock. Essas  transferências são de até 32 bits.
@@ -49,7 +49,7 @@ https://github.com/FayrosSky/embarcatech_dma/tree/main/src
 ```
 
 # Conclusão 
-O DMA no Raspberry Pi Pico W permite transferir dados rapidamente sem sobrecarregar a CPU. Neste tutorial, aprendemos a usar o DMA para capturar dados de temperatura com o ADC, configurando canais e transferências. Com isso, você pode criar projetos eficientes e explorar o potencial do DMA em aplicações de alto desempenho.
+Neste tutorial, aprendemos a usar o DMA na captura de dados de temperatura através do ADC, abrangendo a configuração de canais e transferências. Com isso, você estará apto a desenvolver projetos eficientes e explorar as capacidades do DMA em aplicações de alto desempenho
 
 # Referências
 - [Documentation Pico SDK | hardware_dma](https://www.raspberrypi.com/documentation/pico-sdk/hardware.html#group_hardware_dma)
