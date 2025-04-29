@@ -45,7 +45,7 @@ Com todas essas tarefas, você compreenderá o funcionamento geral do DMA e pode
 
 > Caso queira apenas fazer o download do código-fonte deste projeto, você pode usar o site [Download GitHub directory](https://download-directory.github.io) e colocar o link abaixo (para baixar apenas a pasta onde estão os arquivos em questão):
 ```
-https://github.com/alexsousadev/dma_tutorial/tree/main/src
+https://github.com/FayrosSky/embarcatech_dma/tree/main/src
 ```
 
 # Conclusão 
