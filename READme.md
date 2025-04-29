@@ -7,14 +7,10 @@ Este repositório tem como objetivo explicar, de forma simples e prática, como 
 O DMA (Direct Memory Access), ou Acesso Direto à Memória, no Raspberry Pi Pico W **é uma funcionalidade que permite a transferência de dados entre diferentes partes do sistema sem a intervenção direta do processador principal.**
 
 >  Isso significa que ele pode copiar dados entre a memória e os periféricos, como GPIOs ou PWM, sem sobrecarregar a CPU, liberando-a para realizar outras tarefas.
-<!-- 
-![Exemplo do DMA](./images/dma-diagram.png) -->
 
-<div align="center">
-
-![Exemplo do DMA](./images/dma-diagram.png)
-
-</div>
+<p align="center">
+    <img src="./images/dma-diagram.png" alt="DMA Exemplo" width="700"/>
+</p>
 
 # 2) Habilitando o DMA
 Essa interface é habilitada através da lib de baixo nível `hardware/dma.h`, nativa do Pico SDK. O DMA do Pico W possui algumas especificações:
@@ -49,7 +45,7 @@ Com todas essas tarefas, você compreenderá o funcionamento geral do DMA e pode
 
 > Caso queira apenas fazer o download do código-fonte deste projeto, você pode usar o site [Download GitHub directory](https://download-directory.github.io) e colocar o link abaixo (para baixar apenas a pasta onde estão os arquivos em questão):
 ```
-https://github.com/alexsousadev/dma_tutorial/tree/main/dma_init
+https://github.com/alexsousadev/dma_tutorial/tree/main/src
 ```
 
 # Conclusão 

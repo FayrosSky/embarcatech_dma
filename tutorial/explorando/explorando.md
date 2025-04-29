@@ -11,6 +11,16 @@ O DMA pode operar em três modos fundamentais de transferência de dados:
 
 No coração do funcionamento de cada canal DMA, existem alguns locais de memória especiais, **os registradores.**  É neles que você diz ao DMA o que ele precisa fazer. São eles: 
 
+<p align="center">
+    <img src="../../images/dma-registers.png" alt="Registradores DMA" width="600"/>
+</p>
+
+- `READ_ADDR` e `WRITE_ADDR` (Leitura e Escrita)
+- `CTRL` (Controle no geral)
+- `TRANS_COUNT` (Controle de Transferência)
+
+Agora vamos entender cada um deles.
+
 ### 1 READ_ADDR e WRITE_ADDR (Leitura e Escrita)
 Pense neles como os "endereços" de onde o DMA vai pegar os dados e onde ele vai colocar os dados, respectivamente.
 > Por exemplo, se você quer que o DMA mova dados de um pedaço da memória para um periférico, você coloca o endereço desse pedaço da memória no `READ_ADDR` e o endereço do periférico no `WRITE_ADDR`.    

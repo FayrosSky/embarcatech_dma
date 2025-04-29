@@ -51,6 +51,6 @@ int main()
 Pronto, agora você já pode executar o programa e ver os dados capturados no terminal.
 
 ---
-## 🔗 Veja o código fonte completo [AQUI](../../../dma_init/dma_blocking.c)
+## 🔗 Veja o código fonte completo [AQUI](../../../src/dma_init/dma_blocking.c)
 ---
 ## [Voltar](../../implementacao/2-config-dma/config-dma.md#4-modo-bloqueante-x-modo-com-interrupção)

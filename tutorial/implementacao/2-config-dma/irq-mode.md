@@ -1,7 +1,12 @@
 
-## 3) Criando a função para tratar a interrupção
+# Modo IRQ (Interrupção)
 
-Agora, vamos criar nossa função que lidar com a interrupção:
+No modo IRQ, **o objetivo é executar uma função específica assim que uma transferência de dados é concluída.** Essa função é chamada de rotina de tratamento de interrupção (ISR). Primeiro, vamos definir uma variável que irá sinalizar a conclusão da transferência:
+
+```c
+static volatile bool dma_complete = false;
+```
+Ela será modificada pela função handler e verificada no loop principal do programa para podermos tratar os dados que foram transferidos (no nosso caso, apenas exibir eles). Agora sim podemos definir a função para tratar a interrupção:
 
 ```c
 void dma_handler()
@@ -30,7 +35,7 @@ irq_set_exclusive_handler(DMA_IRQ_0, dma_handler);
 irq_set_enabled(DMA_IRQ_0, true);
 ```
 - Dizemos que queremos receber interrupções quando o dma desse canal (`dma_channel`) terminar de executar as transferências
-- Dizemos qual função vai lidar com essa interrupção: `dma_handler`
+- Dizemos qual função vai lidar com essa interrupção (`dma_handler`)
 - Habilitamos a interrupção de fato (`irq_set_enabled`).
 
 ### O que é DMA_IRQ
@@ -62,12 +67,12 @@ int main()
     return 0;
 }
 ```
-- `if(dma_complete):` Verifica se a transferência foi concluída (flga ativada lá no handler)
+- `if(dma_complete):` Verifica se a transferência foi concluída (flag ativada lá no handler)
    > Se sim, exibe os dados (`print_samples()`) e reseta a flag (`dma_complete = false;`)
 
 Pronto, agora você já pode executar o programa e ver os dados capturados no terminal.
 
 ---
-## 🔗 Veja o código fonte completo [AQUI](../../../dma_init/dma_irq.c)
+## 🔗 Veja o código fonte completo [AQUI](../../../src/dma_init/dma_irq.c)
 ---
 ## [Voltar](../../implementacao/2-config-dma/config-dma.md#4-modo-bloqueante-x-modo-com-interrupção)
