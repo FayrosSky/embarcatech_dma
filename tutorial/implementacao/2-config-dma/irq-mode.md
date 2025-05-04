@@ -29,7 +29,7 @@ void dma_handler()
 ## 4) Iniciando a interrupção
 Agora que já temos nossa função handler, podemos ativar nossa interrupção:
 
-```C
+```c
 dma_channel_set_irq0_enabled(dma_channel, true);
 irq_set_exclusive_handler(DMA_IRQ_0, dma_handler);
 irq_set_enabled(DMA_IRQ_0, true);

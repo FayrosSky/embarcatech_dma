@@ -16,10 +16,11 @@ Cada um desses modos tem características, vantagens e desvantagens específicas
     ```
     O `dma_channel_get_default_config` traz uma estrutura de configuração padrão (Para ver cada campo, clique [AQUI](../../funcoes/configuracao.md#5-dma_channel_get_default_config-uint-channel))
 
-    Isso facilita nossa vida porque já vem a maior parte configurada, mas podemos configurar cada parte de forma indivual com funções próprias para isso. Cada parte da configuração pode ser alterada com funções `channel_config_set`. Exemplo:
+    Isso facilita nossa vida porque já vem a maior parte configurada, mas podemos configurar cada parte de forma individual com funções próprias para isso. Cada parte da configuração pode ser alterada com funções `channel_config_set`. Exemplo:
     - `channel_config_set_read_increment();`
     - `channel_config_set_write_increment();`
     - `channel_config_set_dreq();`
+    - ...
 
     > Veja a lista completa [aqui](https://www.raspberrypi.com/documentation/pico-sdk/hardware.html#group_channel_config).
 
@@ -35,7 +36,7 @@ Cada um desses modos tem características, vantagens e desvantagens específicas
     - Definimos que o endereço de escrita deve avançar (`TRUE`)
         > Isso é necessário porque vamos armazenar em um buffer, onde vai guardar todas as amostras para serem tratadas depois
     - Colocamos que o DREQ seja o ADC (`DREQ_ADC`)
-        > No caso, ela está dizendo que o sinal do ADC será o gatilho que avisa o DMA para transferir dados. Ou seja, estamos conectando com o ADC
+        > No caso, estamos dizendo que o sinal do ADC será o gatilho que avisa o DMA para transferir dados. Ou seja, estamos conectando com o ADC!
 
     ### Outros exemplos de DRQ
     Exemplos de sinais que podem ativar a transferência do DMA são: 
@@ -59,8 +60,8 @@ Agora vamos configurar de fato o canal:
 
 ```c
 dma_channel_configure(
-    dma_channel,
-    &config,
+    dma_channel,        // Canal que queremos configurar
+    &config,            // Configuração do DMA
     (void *)adc_buffer, // Endereço de escrita 
     &adc_hw->fifo,      // Endereço de leitura (FIFO do ADC)
     SAMPLES,            // Quantidade de transferências
@@ -71,7 +72,7 @@ dma_channel_configure(
 - `config`: Configuração que queremos aplicar (nossa `config`)
 - `adc_buffer`: Endereço de escrita
     > Para onde vamos escrever os dados?
-- `adc_hw->fifo`: Endereço de escrita
+- `adc_hw->fifo`: Endereço de leitura
     > De onde estamos pegando os dados? Nesse caso é do FIFO do ADC, por isso estamos usando `&adc_hw->fifo`
 - `SAMPLES`: Quantidade de transferências (até ativar a IRQ)
 - `false`: Não inicia ainda (é nosso liga/desliga)

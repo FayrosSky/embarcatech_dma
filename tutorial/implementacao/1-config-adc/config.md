@@ -49,6 +49,33 @@ Pronto, já estamos captando as amostras. Agora vamos seguir para a configuraç�
 ## Por que do uso do ADC com FIFO?
 O FIFO garante que os dados do ADC sejam armazenados temporariamente até que o DMA possa transferi-los, evitando que o buffer seja preenchido ou esvaziado antes que os dados possam ser processados, garantindo um fluxo contínuo de informações.
 
+---
+## 🔗 Trecho Completo
+
+```c
+#define TEMP_CHANNEL 4 // Canal 4 para o sensor de temperatura interno
+
+// Inicialização do ADC
+void initialize_adc()
+  {
+    // Inicializando o adc e sensor de temperatura
+    adc_init();
+    adc_set_temp_sensor_enabled(true);
+    adc_select_input(TEMP_CHANNEL);
+
+    // Configura o FIFO do ADC
+    adc_fifo_setup(
+       true,  
+       true,  
+       1,    
+       false, 
+       false  
+    );
+
+    // Inicia o ADC
+    adc_run(true);
+  }
+```
 
 ---
 ## [Voltar](../../../READme.md#4-criando-nosso-projeto-com-dma)

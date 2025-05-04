@@ -60,11 +60,11 @@ void initialize_dma()
 
     // Configura o canal DMA
     dma_channel_configure(
-        dma_channel,
-        &config,
-        (void *)adc_buffer, // Destino (cast para evitar warning)
-        &adc_hw->fifo,      // Origem (FIFO do ADC)
-        SAMPLES,            // Número de transferências
+        dma_channel,        // Canal que queremos configurar
+        &config,            // Configuração do DMA
+        (void *)adc_buffer, // Endereço de escrita
+        &adc_hw->fifo,      // Endereço de leitura (FIFO do ADC)
+        SAMPLES,            // Quantidade de transferências
         false               // Não inicia ainda
     );
 
