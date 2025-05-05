@@ -1,11 +1,15 @@
 
 # Modo IRQ (Interrupção)
 
-No modo IRQ, **o objetivo é executar uma função específica assim que uma transferência de dados é concluída.** Essa função é chamada de rotina de tratamento de interrupção (ISR). Primeiro, vamos definir uma variável que irá sinalizar a conclusão da transferência:
+No modo IRQ, **o objetivo é executar uma função específica assim que uma transferência de dados é concluída.** Essa função é chamada de rotina de tratamento de interrupção (ISR). Primeiro, vamos importar a biblioteca para trabalhar com interrupções (`hardware/irq.h`) e definir uma variável que irá sinalizar a conclusão da transferência:
 
 ```c
+#include "hardware/irq.h"
+
 static volatile bool dma_complete = false;
 ```
+> 🚩 Não esqueça de colocar a `hardware_irq` no `CMakeLists.txt` também, em `target_link_libraries`.
+
 Ela será modificada pela função handler e verificada no loop principal do programa para podermos tratar os dados que foram transferidos (no nosso caso, apenas exibir eles). Agora sim podemos definir a função para tratar a interrupção:
 
 ```c

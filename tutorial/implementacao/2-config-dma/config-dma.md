@@ -6,6 +6,14 @@ A DMA no Raspberry Pi Pico oferece duas formas principais de operação:
 
 Cada um desses modos tem características, vantagens e desvantagens específicas, que os tornam mais adequados para diferentes tipos de aplicações. Abaixo, vamos explorar cada um. Mas antes, vamos fazer a configuração que é universal para ambos os modos.
 
+Antes de tudo, vamos importar a biblioteca `hardware/dma.h` que nos permite acessar as funções de configuração e controle do DMA.
+
+```c
+#include "hardware/dma.h"
+```
+> 🚩 Não esqueça de colocar ela no `CMakeLists.txt` também, em `target_link_libraries`.
+
+Agora sim podemos começar a configuração...
 
 ## 1) Criando o objeto de configuração
 
@@ -80,6 +88,8 @@ dma_channel_configure(
 Aqui no nosso projeto, vamos apenas exibir os dados capturados. Mas é aqui que você pode fazer o tratamento que quiser com os dados que foram coletados:
 
 ```c
+int count = 0;
+
 void print_samples()
 {
     printf("DMA concluído! Amostras:\n");
@@ -93,6 +103,7 @@ void print_samples()
     printf("\n");
 }
 ```
+> O que estamos fazendo aqui é percorrendo o buffer `adc_buffer` e imprimir os valores de cada amostra, convertendo eles para o valor de temperatura em °C.
 ## 4) Modo bloqueante x Modo com Interrupção
 Agora que já temos a função que vai exibir os dados capturados, é aqui que vamos terminar a configuração do nosso DMA, em umas das duas formas:
 
