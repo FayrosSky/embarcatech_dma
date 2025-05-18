@@ -63,4 +63,18 @@ As funções de gerenciamento permitem **reivindicar** (reservar) ou **liberar**
   </details>
 
 ---
+## 5) `dma_channel_cleanup()`
+> Limpa recursos associados a um canal DMA após o uso.
+  <details>
+  <summary>Ver detalhes</summary>
+
+  - **Função completa:** `void dma_channel_cleanup(uint channel);`
+
+   -   **Parâmetros:**
+        -   `channel`: O número do canal DMA a ser limpo.
+
+  -   **Retorno:** Nenhum (void)
+  </details>
+
+---
 ## [Voltar](../../READme.md#3-funções-associadas)  ----------------------------------------- Próx.: [Funções de Interrupção](./interrupcoes.md)
